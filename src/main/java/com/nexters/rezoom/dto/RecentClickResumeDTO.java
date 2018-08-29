@@ -1,7 +1,5 @@
 package com.nexters.rezoom.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.sql.Timestamp;
 
 /**
@@ -9,11 +7,12 @@ import java.sql.Timestamp;
  */
 public class RecentClickResumeDTO {
     private int resumeId;
-    private String companyName;
-    private String jobType;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private String username;
     private Timestamp clickDate;
+
+    public RecentClickResumeDTO() {
+        this.clickDate = new Timestamp(System.currentTimeMillis());
+    }
 
     public int getResumeId() {
         return resumeId;
@@ -23,20 +22,12 @@ public class RecentClickResumeDTO {
         this.resumeId = resumeId;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getJobType() {
-        return jobType;
-    }
-
-    public void setJobType(String jobType) {
-        this.jobType = jobType;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Timestamp getClickDate() {
