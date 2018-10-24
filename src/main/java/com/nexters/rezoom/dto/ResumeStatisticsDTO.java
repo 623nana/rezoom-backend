@@ -1,47 +1,17 @@
 package com.nexters.rezoom.dto;
 
 import com.nexters.rezoom.domain.ResumeStatisticsSummary;
+import lombok.Data;
 
 /**
  * Created by JaeeonJin on 2018-08-19.
  */
+@Data
 public class ResumeStatisticsDTO {
     private ResumeStatisticsDetail pass;
     private ResumeStatisticsDetail nonPass;
     private ResumeStatisticsDetail submit;
     private ResumeStatisticsDetail nonSubmit;
-
-    public ResumeStatisticsDetail getSubmit() {
-        return submit;
-    }
-
-    public void setSubmit(ResumeStatisticsDetail submit) {
-        this.submit = submit;
-    }
-
-    public ResumeStatisticsDetail getPass() {
-        return pass;
-    }
-
-    public void setPass(ResumeStatisticsDetail pass) {
-        this.pass = pass;
-    }
-
-    public ResumeStatisticsDetail getNonPass() {
-        return nonPass;
-    }
-
-    public void setNonPass(ResumeStatisticsDetail nonPass) {
-        this.nonPass = nonPass;
-    }
-
-    public ResumeStatisticsDetail getNonSubmit() {
-        return nonSubmit;
-    }
-
-    public void setNonSubmit(ResumeStatisticsDetail nonSubmit) {
-        this.nonSubmit = nonSubmit;
-    }
 
     private enum PASS_TYPE { 합격, 불합격, 제출, 미제출 }
 
@@ -58,6 +28,7 @@ public class ResumeStatisticsDTO {
         this.nonSubmit = new ResumeStatisticsDetail(PASS_TYPE.미제출.name(), nonSubmit, calculateRatio(resumeSize, nonSubmit));
     }
 
+    @Data
     private static class ResumeStatisticsDetail {
         private String title; // 합격, 불합격, 미제출
         private int resumeNum; // 각 이력서 갯수
@@ -66,30 +37,6 @@ public class ResumeStatisticsDTO {
         public ResumeStatisticsDetail(String title, int resumeNum, double ratio) {
             this.title = title;
             this.resumeNum = resumeNum;
-            this.ratio = ratio;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public int getResumeNum() {
-            return resumeNum;
-        }
-
-        public void setResumeNum(int resumeNum) {
-            this.resumeNum = resumeNum;
-        }
-
-        public double getRatio() {
-            return ratio;
-        }
-
-        public void setRatio(double ratio) {
             this.ratio = ratio;
         }
     }

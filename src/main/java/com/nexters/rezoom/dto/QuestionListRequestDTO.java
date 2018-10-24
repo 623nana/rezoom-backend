@@ -1,24 +1,12 @@
 package com.nexters.rezoom.dto;
 
+import com.nexters.rezoom.domain.Question;
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class QuestionListRequestDTO {
 	private int resumeId;
-	private List<QuestionDTO> questions;
-
-	public int getResumeId() {
-		return resumeId;
-	}
-
-	public void setResumeId(int resumeId) {
-		this.resumeId = resumeId;
-	}
-
-	public List<QuestionDTO> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(List<QuestionDTO> questions) {
-		this.questions = questions;
-	}
+	private List<Question> questions;
 }
