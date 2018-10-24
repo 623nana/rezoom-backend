@@ -41,15 +41,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // authenticate
         http.authorizeRequests()
-//                .antMatchers("/**").permitAll();
-            .antMatchers("/").permitAll()
-			.antMatchers("/static/**").permitAll()
-			.antMatchers("/favicon.ico").permitAll()
-			.antMatchers("/resources/**").permitAll()
-			.antMatchers("/webjars/**").permitAll()
-			.antMatchers("/error/**").permitAll()
-            .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-            .anyRequest().authenticated();
+                .antMatchers("/**").permitAll();
+//            .antMatchers("/").permitAll()
+//			.antMatchers("/static/**").permitAll()
+//			.antMatchers("/favicon.ico").permitAll()
+//			.antMatchers("/resources/**").permitAll()
+//			.antMatchers("/webjars/**").permitAll()
+//			.antMatchers("/error/**").permitAll()
+//            .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+//            .anyRequest().authenticated();
 
         // sets filters
         http
