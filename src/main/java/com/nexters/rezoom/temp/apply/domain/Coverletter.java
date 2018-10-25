@@ -1,11 +1,15 @@
 package com.nexters.rezoom.temp.apply.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "coverletter")
 public class Coverletter implements Serializable {
@@ -14,9 +18,6 @@ public class Coverletter implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "coverletter_Id")
     private long Id;
-
-    @Column(name = "application_id")
-    private long applicationId;
 
     @Column(name = "pass_type")
     @Enumerated(EnumType.STRING)
@@ -29,11 +30,6 @@ public class Coverletter implements Serializable {
     @Column(name = "deadline")
     @JsonFormat(pattern = "yyyy-MM-dd HH")
     private Timestamp deadline;
-
-    @Override
-    public String toString() {
-        return applicationId+" "+passType+" "+submitType;
-    }
 
     //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
    // @JoinColumn(name = "coverletter_Id")

@@ -29,7 +29,7 @@ public class SwaggerConfig {
                 .ignoredParameterTypes(Principal.class)
                 .globalOperationParameters(apiParameter())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.nexters.rezoom.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.nexters.rezoom.api"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());

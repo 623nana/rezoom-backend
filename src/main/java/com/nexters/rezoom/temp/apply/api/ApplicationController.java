@@ -1,5 +1,6 @@
-package com.nexters.rezoom.temp.apply.controller;
+package com.nexters.rezoom.temp.apply.api;
 
+import com.nexters.rezoom.domain.Question;
 import com.nexters.rezoom.temp.apply.domain.Application;
 import com.nexters.rezoom.temp.apply.domain.ApplyType;
 import com.nexters.rezoom.temp.apply.domain.Coverletter;
@@ -17,17 +18,15 @@ public class ApplicationController {
     @GetMapping(value = "/{id}")
     public Application getApplication(@PathVariable long id) {
         Application application = repository.findById(id);
-        System.out.println(application);
         return application;
     }
 
     @PostMapping
     public void saveApplication() {
-        //        Question q1 = new Question("지원 동기는?", "그냥");
-//		Question q2 = new Question("성장 과정은?", "잘컷음");
-//		List<Question> questions = Arrays.asList(q1, q2);
         Coverletter coverletter = new Coverletter();
         Application application = new Application("이카운트", "Backend-Dev", ApplyType.JUNIOR, coverletter);
+
+
 
         repository.save(application);
     }

@@ -1,9 +1,14 @@
 package com.nexters.rezoom.temp.apply.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 // aggregate root
+@Getter @Setter
 @Entity
 @Table(name = "application")
 public class Application implements Serializable {
@@ -26,17 +31,11 @@ public class Application implements Serializable {
     @Enumerated(EnumType.STRING)
     private ApplyType applyType;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "coverletter_id")
     private Coverletter coverletter;
 
-    @Override
-    public String toString() {
-        return id+" "+company+" "+jobType+" "+applyType+" "+coverletter;
-    }
-
     public Application () {}
-
 
     public Application (String company, String jobType) {
         this.company = company;
@@ -55,10 +54,5 @@ public class Application implements Serializable {
         this.applyType = applyType;
         this.coverletter = coverletter;
     }
-
-    // 자소서 문항 리스트, value
-//    @OneToMany(cascade = {CascadeType.PERSIST}, orphanRemoval = true)
-//    @JoinColumn(name = "coverletter_id")
-//    @OrderColumn(name = "list_idx")
 
 }
