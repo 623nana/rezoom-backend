@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,9 +32,9 @@ public class Coverletter implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH")
     private Timestamp deadline;
 
-    //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-   // @JoinColumn(name = "coverletter_Id")
-   // private List<Question> questions;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "coverletter_Id")
+    private List<Question> questions;
 
     public Coverletter() {
         this.passType = PassType.WAIT;
